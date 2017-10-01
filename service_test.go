@@ -5,6 +5,8 @@ import (
 	"context"
 )
 
+// ------------------- Count ------------------
+
 func TestStringService_Count(t *testing.T) {
 	ctx := context.Background()
 	s := StringService{}
@@ -30,6 +32,8 @@ func TestStringService_Count_EmptyString(t *testing.T) {
 		t.Fatalf("Expected error: %s: got: %s", EmptyStringErr, err)
 	}
 }
+
+// ------------------- Lower Case ------------------
 
 func TestStringService_LowerCase(t *testing.T) {
 	ctx := context.Background()
@@ -58,6 +62,8 @@ func TestStringService_LoweCase_EmptyString(t *testing.T) {
 		t.Fatalf("Expected error: %s: got: %s", EmptyStringErr, err)
 	}
 }
+
+// ------------------- Upper Case ------------------
 
 func TestStringService_UpperCase(t *testing.T) {
 	ctx := context.Background()
