@@ -16,11 +16,7 @@ func makeCountEndpoint(svc StringService) endpoint.Endpoint {
 		}
 
 		// call service method
-		count, err := svc.Count(ctx, req.S)
-
-		if err != nil {
-			return countResponseBody{V: 0, E: err.Error()}, nil
-		}
+		count := svc.Count(ctx, req.S)
 
 		return countResponseBody{V: count, E: ""}, nil
 	}

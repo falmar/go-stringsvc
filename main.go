@@ -10,7 +10,7 @@ import (
 func main() {
 	addr := ":8080"
 	router := httprouter.New()
-	svc := StringService{}
+	svc := stringService{}
 
 	countHandler := routerWrapper(
 		httpTransport.NewServer(

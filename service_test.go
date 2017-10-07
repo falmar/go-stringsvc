@@ -9,27 +9,12 @@ import (
 
 func TestStringService_Count(t *testing.T) {
 	ctx := context.Background()
-	s := StringService{}
+	s := stringService{}
 
-	i, err := s.Count(ctx, "hello world")
-
-	if err != nil {
-		t.Fatalf("Unexpected error: %s", err)
-	}
+	i := s.Count(ctx, "hello world")
 
 	if i != 11 {
-		t.Fatalf("Expected count of: %d; got: %d", 1, i)
-	}
-}
-
-func TestStringService_Count_EmptyString(t *testing.T) {
-	ctx := context.Background()
-	s := StringService{}
-
-	_, err := s.Count(ctx, "")
-
-	if err != EmptyStringErr {
-		t.Fatalf("Expected error: %s: got: %s", EmptyStringErr, err)
+		t.Fatalf("Expected count of: %d; got: %d", 11, i)
 	}
 }
 
@@ -37,7 +22,7 @@ func TestStringService_Count_EmptyString(t *testing.T) {
 
 func TestStringService_LowerCase(t *testing.T) {
 	ctx := context.Background()
-	s := StringService{}
+	s := stringService{}
 
 	lc, err := s.LowerCase(ctx, "heLLo woRLd")
 
@@ -54,7 +39,7 @@ func TestStringService_LowerCase(t *testing.T) {
 
 func TestStringService_LoweCase_EmptyString(t *testing.T) {
 	ctx := context.Background()
-	s := StringService{}
+	s := stringService{}
 
 	_, err := s.LowerCase(ctx, "")
 
@@ -67,7 +52,7 @@ func TestStringService_LoweCase_EmptyString(t *testing.T) {
 
 func TestStringService_UpperCase(t *testing.T) {
 	ctx := context.Background()
-	s := StringService{}
+	s := stringService{}
 
 	uc, err := s.UpperCase(ctx, "heLLo woRLd")
 
@@ -84,7 +69,7 @@ func TestStringService_UpperCase(t *testing.T) {
 
 func TestStringService_UpperCase_EmptyString(t *testing.T) {
 	ctx := context.Background()
-	s := StringService{}
+	s := stringService{}
 
 	_, err := s.UpperCase(ctx, "")
 

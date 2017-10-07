@@ -9,7 +9,7 @@ import (
 
 func TestCountEndpoint(t *testing.T) {
 	req := requestBody{S: "WorLD HELLO"}
-	svc := StringService{}
+	svc := stringService{}
 	ctx := context.Background()
 	var expectedResponseValue int64 = 11
 	expectedResponseError := ""
@@ -36,41 +36,11 @@ func TestCountEndpoint(t *testing.T) {
 	}
 }
 
-func TestCountEndpoint_EmptyString(t *testing.T) {
-	req := requestBody{S: ""}
-	svc := StringService{}
-	ctx := context.Background()
-	var expectedResponseValue int64 = 0
-	expectedResponseError := EmptyStringErr.Error()
-
-	// execute endpoint
-	response, err := makeCountEndpoint(svc)(ctx, req)
-
-	if err != nil {
-		t.Fatalf("Unexpected error: %s", err)
-	}
-
-	// check response type countResponseBody
-	res, ok := response.(countResponseBody)
-
-	if !ok {
-		t.Fatalf("Expected response type: %T; got: %T", countResponseBody{}, response)
-	}
-
-	if res.E != expectedResponseError {
-		t.Fatalf("Unexpected error on response: %s", res.E)
-	}
-
-	if res.V != expectedResponseValue {
-		t.Fatalf("Expected value on response: %d: got: %d", expectedResponseValue, res.V)
-	}
-}
-
 // ------------------- Lower Case ------------------
 
 func TestLowerCaseEndpoint(t *testing.T) {
 	req := requestBody{S: "WorLD HELLO"}
-	svc := StringService{}
+	svc := stringService{}
 	ctx := context.Background()
 	expectedResponseValue := "world hello"
 	expectedResponseError := ""
@@ -100,7 +70,7 @@ func TestLowerCaseEndpoint(t *testing.T) {
 
 func TestLowerCaseEndpoint_EmptyString(t *testing.T) {
 	req := requestBody{S: ""}
-	svc := StringService{}
+	svc := stringService{}
 	ctx := context.Background()
 	expectedResponseValue := ""
 	expectedResponseError := EmptyStringErr.Error()
@@ -132,7 +102,7 @@ func TestLowerCaseEndpoint_EmptyString(t *testing.T) {
 
 func TestUpperCaseEndpoint(t *testing.T) {
 	req := requestBody{S: "hello world"}
-	svc := StringService{}
+	svc := stringService{}
 	ctx := context.Background()
 	expectedResponseValue := "HELLO WORLD"
 	expectedResponseError := ""
@@ -162,7 +132,7 @@ func TestUpperCaseEndpoint(t *testing.T) {
 
 func TestUpperCaseEndpoint_EmptyString(t *testing.T) {
 	req := requestBody{S: ""}
-	svc := StringService{}
+	svc := stringService{}
 	ctx := context.Background()
 	expectedResponseValue := ""
 	expectedResponseError := EmptyStringErr.Error()
